@@ -15,7 +15,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  for (j=0x80;j>0x00;j/=0x02) {
+  for (j=0x80;j>0x01;j/=0x02) {
     digitalWrite(latchPin, LOW);
     shiftOut(dataPin, clockPin, LSBFIRST, j);
     digitalWrite(latchPin, HIGH);
