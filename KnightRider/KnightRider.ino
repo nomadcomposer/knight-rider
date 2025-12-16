@@ -1,8 +1,10 @@
 int dataPin = 9;
 int latchPin = 10;
 int clockPin = 11;
+int dt = 250;
 
-byte LED1s = 0x02;
+byte j;
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -13,7 +15,11 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  digitalWrite(latchPin, LOW);
-  shiftOut(dataPin, clockPin, LSBFIRST, LED1s);
-  digitalWrite(latchPin, HIGH);
-}
+  for (j=0x80;j>0x00;j/=0x02) {
+    digitalWrite(latchPin, LOW);
+    shiftOut(dataPin, clockPin, LSBFIRST, j);
+    digitalWrite(latchPin, HIGH);
+    delay(dt);
+  }
+  
+}
