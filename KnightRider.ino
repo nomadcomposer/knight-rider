@@ -1,3 +1,6 @@
+int clockPin = 9;
+int latchPin = 10;
+int dataPin = 11;
 void setup() {
   // put your setup code here, to run once:
 }
